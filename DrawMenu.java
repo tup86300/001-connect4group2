@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.File;
+import java.util.Scanner;
 
 /**
  * Class that draws the menus for the start screen
@@ -52,7 +54,18 @@ public class DrawMenu {
 
 
         // set background
-        container = new JLabel(new ImageIcon(getClass().getResource("/res/images/backgroundImage.jpg")));
+        Scanner scan = new Scanner(System.in);
+        System.out.print("(Optional) Enter custom background image file path: ");
+        String path = scan.nextLine();
+        File f = new File(path);
+        if (f.exists()) {
+            System.out.println("Successfully imported custom background!");
+            container = new JLabel(new ImageIcon(path));
+        }
+        else {
+            System.out.println("Invalid path. Using default background.");
+            container = new JLabel(new ImageIcon(getClass().getResource("/res/images/backgroundImage.jpg")));
+        }
         container.setSize(ld.getWidth(),ld.getHeight());
         container.setMinimumSize(container.getSize());
         container.setMaximumSize(container.getSize());
