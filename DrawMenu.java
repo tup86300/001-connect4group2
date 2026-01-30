@@ -24,6 +24,7 @@ public class DrawMenu {
 
     private BackgroundSound background = new BackgroundSound();
     Boolean muteSound = false;
+    Boolean isDarkMode = false;
 
 
     // x : number of pixels from left of the screen
@@ -195,6 +196,21 @@ public class DrawMenu {
             }
         });
 
+        JButton darkMode = new RoundButton(new ImageIcon(getClass().getResource("/res/images/lightModeIcon.png")),null);
+        darkMode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                toggleDarkMode();
+                if (isDarkMode == false) {
+                    isDarkMode = false;
+                    ((RoundButton) darkMode).setImg(new ImageIcon(getClass().getResource("/res/images/lightModeIcon.png")));
+                } else {
+                    isDarkMode = true;
+                    ((RoundButton) darkMode).setImg(new ImageIcon(getClass().getResource("/res/images/darkModeIcon.png")));
+                }
+            }
+        });
+
         // exit button
         JButton exit = new JButton("EXIT");
         exit.addActionListener(new ActionListener() {
@@ -209,12 +225,15 @@ public class DrawMenu {
         pvp.setAlignmentX(Component.CENTER_ALIGNMENT);
         pvai.setAlignmentX(Component.CENTER_ALIGNMENT);
         sound.setAlignmentX(Component.CENTER_ALIGNMENT);
+        darkMode.setAlignmentX(Component.CENTER_ALIGNMENT);
         exit.setAlignmentX(Component.CENTER_ALIGNMENT);
         selectToken.setMaximumSize(d);
         pvp.setMaximumSize(d);
         pvai.setMaximumSize(d);
         sound.setMaximumSize(new Dimension(50,50));
+        darkMode.setMaximumSize(new Dimension(50,50));
         sound.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
+        darkMode.setMaximumSize(new Dimension(50,50));
         exit.setMaximumSize(d);
 
         // space between buttons
@@ -228,7 +247,15 @@ public class DrawMenu {
         container.add(Box.createRigidArea(new Dimension(0,10)));
         container.add(exit);
         container.add(Box.createRigidArea(new Dimension(0,10)));
-        container.add(sound);
+        JPanel horizontalButtonPane = new JPanel();
+        horizontalButtonPane.setLayout(new BoxLayout(horizontalButtonPane, BoxLayout.LINE_AXIS));
+        horizontalButtonPane.add(Box.createHorizontalGlue());
+        horizontalButtonPane.add(sound);
+        horizontalButtonPane.add(Box.createRigidArea(new Dimension(10, 0)));
+        horizontalButtonPane.add(darkMode);
+        horizontalButtonPane.add(Box.createHorizontalGlue());
+        horizontalButtonPane.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        container.add(horizontalButtonPane);
 
     }
 
@@ -336,6 +363,11 @@ public class DrawMenu {
         else{
             background.pause();
         }
+    }
+
+    private void toggleDarkMode(){
+        isDarkMode = !isDarkMode;
+
     }
 
     /**
