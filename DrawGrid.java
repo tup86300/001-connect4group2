@@ -55,6 +55,7 @@ public class DrawGrid {
 
         frame.add(board);
 
+        /*
         Window w=new Window(null)
         {
             @Override
@@ -80,6 +81,7 @@ public class DrawGrid {
         w.setBounds(w.getGraphicsConfiguration().getBounds());
         w.setBackground(new Color(0, true));
         w.setVisible(true);
+        */
 
 
         // empty space for buttons
