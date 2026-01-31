@@ -20,6 +20,7 @@ public class DrawGrid {
     private boolean gameOver = false;
     private boolean gameEnd = false;
     private boolean isMute;
+    private boolean isDarkMode;
 
     private JPanel container;
 
@@ -42,8 +43,13 @@ public class DrawGrid {
         RoundButton rButton = new RoundButton(new ImageIcon(getClass().getResource("/res/images/replay.png")),null);
         ai = hasAi;
         isMute = menu.getIsMute();
+        isDarkMode = menu.isDarkMode;
 
         frame = new JFrame("CONNECT 4");
+        if (isDarkMode) {
+            frame.setBackground(Color.black);
+            frame.getContentPane().setBackground(Color.black);
+        }
         frame.setBounds(ld.getX(),ld.getY(),ld.getWidth(), ld.getHeight());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setPreferredSize(frame.getSize());
@@ -52,9 +58,7 @@ public class DrawGrid {
         // make some room for button
         boardSize = new Dimension(ld.getWidth(),ld.getHeight()-150);
         board = new MultiDraw(boardSize,players,algorithm);
-
         frame.add(board);
-
         /*
         Window w=new Window(null)
         {
@@ -88,6 +92,10 @@ public class DrawGrid {
         this.container = new JPanel();
         container.setSize(ld.width,100);
         container.add(Box.createRigidArea(new Dimension(0,110)));
+        if (isDarkMode) {
+            container.setBackground(Color.black);
+
+        }
         // button area layout
         container.setLayout(new FlowLayout(FlowLayout.LEFT,60,0));
         // menu button
@@ -235,6 +243,9 @@ public class DrawGrid {
             Dimension d = getSize();
             //adjust background shading 0-255
             int shade = 230;
+            if (isDarkMode) {
+                shade = 64;
+            }
             g2.setColor(new Color(shade, shade, shade));
             g2.fillRect(0,0,d.width,d.height);
             startX = 30;
@@ -326,15 +337,22 @@ public class DrawGrid {
                 if(ai)
                 {
                     if(players[1].getToken() == win)
-                    {
-                        inc+=10;
-                        g2.drawString("AI Wins!", sx, sy+inc);
-                    }
-                    else
-                    {
-                        inc+=10;
-                        g2.drawString("Player Wins!", sx, sy+inc);
-                    }
+            {
+                inc+=10;
+
+                // NEW FUNCTIONALITY: RAFFLE QUOTES IF AI WINS!
+                String[] aiQuotes = {"AI Wins! Too easy.", "AI Wins! System Takeover.", "AI Wins! Robot Power."};
+                String quote = aiQuotes[(turn) % aiQuotes.length]; // Uses turn number to pick a quote
+                g2.drawString(quote, sx, sy+inc);
+            }
+            else
+            {
+                inc+=10;
+                // NEW FUNCTIONALITY: RAFFLE QUOTES IF PLAYER WINS!
+                String[] playerQuotes = {"Player Wins! BOOM.", "Player Wins! WOW.", "Player Wins! NICE MOVES!"};
+                String quote = playerQuotes[(turn) % playerQuotes.length];
+                g2.drawString(quote, sx, sy+inc);
+            }
                 }
                 else
                 {
