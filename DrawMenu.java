@@ -87,7 +87,6 @@ public class DrawMenu {
             // Use selected image as background if valid
             
             
-
         container.setSize(ld.getWidth(),ld.getHeight());
         container.setMinimumSize(container.getSize());
         container.setMaximumSize(container.getSize());
