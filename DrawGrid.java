@@ -326,15 +326,21 @@ public class DrawGrid {
                 if(ai)
                 {
                     if(players[1].getToken() == win)
-                    {
-                        inc+=10;
-                        g2.drawString("AI Wins!", sx, sy+inc);
-                    }
-                    else
-                    {
-                        inc+=10;
-                        g2.drawString("Player Wins!", sx, sy+inc);
-                    }
+            {
+                inc+=10;
+
+                // NEW FUNCTIONALITY: RAFFLE FOR AI WIN 
+                String[] aiQuotes = {"AI Wins! Too easy.", "AI Wins! System Takeover.", "AI Wins! Robot Power."};
+                String quote = aiQuotes[(turn) % aiQuotes.length]; // Uses turn number to pick a quote
+                g2.drawString(quote, sx, sy+inc);
+            }
+            else
+            {
+                inc+=10;
+                // --- RAFFLE FOR PLAYER WIN ---
+                // place-holder for now
+                g2.drawString(quote, sx, sy+inc);
+            }
                 }
                 else
                 {
