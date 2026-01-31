@@ -1,7 +1,7 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.plaf.metal.;
+import javax.swing.plaf.metal.MetalButtonUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -120,9 +120,9 @@ public class DrawMenu {
                 {0,0,250},{150,0,250},{250,0,250},{250,0,150},{200,200,200},{0,0,0}};
         JButton selectToken = new JButton("Select Token");
         if (isDarkMode) {
-            selectToken.setUI(new ());
-            selectToken.setBackground(Color.darkGray);
-            selectToken.setForeground(Color.white);
+            selectToken.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
+            selectToken.setBackground(Color.darkGray); // changes button background color
+            selectToken.setForeground(Color.white); // changes button text color
         }
         selectToken.addActionListener(new ActionListener() {
             @Override
@@ -137,9 +137,9 @@ public class DrawMenu {
 
         JButton pvp = new JButton("Player vs Player");
         if (isDarkMode) {
-            pvp.setUI(new ());
-            pvp.setBackground(Color.darkGray);
-            pvp.setForeground(Color.white);
+            pvp.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
+            pvp.setBackground(Color.darkGray); // changes button background color
+            pvp.setForeground(Color.white); // changes button text color
         }
         pvp.addActionListener(new ActionListener() {
             @Override
@@ -153,9 +153,9 @@ public class DrawMenu {
         // this button sets up the AI level
         JButton pvai = new JButton("Player vs AI");
         if (isDarkMode) {
-            pvai.setUI(new ());
-            pvai.setBackground(Color.darkGray);
-            pvai.setForeground(Color.white);
+            pvai.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
+            pvai.setBackground(Color.darkGray); // changes button background color
+            pvai.setForeground(Color.white); // changes button text color
         }
         pvai.addActionListener(new ActionListener() {
             @Override
@@ -169,9 +169,9 @@ public class DrawMenu {
                 // easy
                 JButton AI_easy_button = new JButton("EASY");
                 if (isDarkMode) {
-                    AI_easy_button.setUI(new ());
-                    AI_easy_button.setBackground(Color.darkGray);
-                    AI_easy_button.setForeground(Color.white);
+                    AI_easy_button.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
+                    AI_easy_button.setBackground(Color.darkGray); // changes button background color
+                    AI_easy_button.setForeground(Color.white); // changes button text color
                 }
                 AI_easy_button.addActionListener(new ActionListener() {
                     @Override
@@ -185,7 +185,7 @@ public class DrawMenu {
                 // hard
                 JButton AI_hard_button = new JButton("HARD");
                 if (isDarkMode) {
-                    AI_hard_button.setUI(new ()); // makes button compatible with setBackground() function
+                    AI_hard_button.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
                     AI_hard_button.setBackground(Color.darkGray); // changes button background color
                     AI_hard_button.setForeground(Color.white); // changes button text color
                 }
@@ -201,9 +201,9 @@ public class DrawMenu {
                 // return to menu button
                 JButton backbt = new JButton("BACK");
                 if (isDarkMode) {
-                    backbt.setUI(new ());
-                    backbt.setBackground(Color.darkGray);
-                    backbt.setForeground(Color.white);
+                    backbt.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
+                    backbt.setBackground(Color.darkGray); // changes button background color
+                    backbt.setForeground(Color.white); // changes button text color
                 }
                 backbt.addActionListener(new ActionListener() {
                     @Override
@@ -245,7 +245,7 @@ public class DrawMenu {
 
         JButton sound = new RoundButton(new ImageIcon(getClass().getResource("/res/images/UnmuteSound.png")),null);
         if (isDarkMode) {
-            sound.setUI(new ()); // makes button compatible with setBackground() function
+            sound.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
             sound.setBackground(Color.darkGray); // changes button background color
             sound.setForeground(Color.white); // changes button text color
         }
@@ -268,7 +268,7 @@ public class DrawMenu {
         // this button toggles dark mode
         JButton darkMode = new RoundButton(new ImageIcon(getClass().getResource("/res/images/darkModeIcon.png")), null);
         if (isDarkMode) {
-            darkMode.setUI(new ()); // makes button compatible with setBackground() function
+            darkMode.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
             darkMode.setBackground(Color.darkGray); // changes button background color
             darkMode.setForeground(Color.white); // changes button text color
             ((RoundButton) darkMode).setImg(new ImageIcon(getClass().getResource("/res/images/lightModeIcon.png")));
@@ -288,9 +288,9 @@ public class DrawMenu {
         // exit button
         JButton exit = new JButton("EXIT");
         if (isDarkMode) {
-            exit.setUI(new ());
-            exit.setBackground(Color.darkGray);
-            exit.setForeground(Color.white);
+            exit.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
+            exit.setBackground(Color.darkGray); // changes button background color
+            exit.setForeground(Color.white); // changes button text color
         }
         exit.addActionListener(new ActionListener() {
             @Override
@@ -463,9 +463,9 @@ public class DrawMenu {
 
         JButton player_1_bt = new JButton("PLAYER 1");
         if (isDarkMode) {
-            player_1_bt.setUI(new ());
-            player_1_bt.setBackground(Color.darkGray);
-            player_1_bt.setForeground(Color.white);
+            player_1_bt.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
+            player_1_bt.setBackground(Color.darkGray); // changes button background color
+            player_1_bt.setForeground(Color.white); // changes button text color
         }
         player_1_bt.addActionListener(new ActionListener() {
             @Override
@@ -480,9 +480,9 @@ public class DrawMenu {
 
         JButton player1_tokenIndicator = new RoundButton(null,new Color(0.0f,0.0f,0.0f,0.0f));
         if (isDarkMode) {
-            player1_tokenIndicator.setUI(new ());
-            player1_tokenIndicator.setBackground(Color.darkGray);
-            player1_tokenIndicator.setForeground(Color.white);
+            player1_tokenIndicator.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
+            player1_tokenIndicator.setBackground(Color.darkGray); // changes button background color
+            player1_tokenIndicator.setForeground(Color.white); // changes button text color
         }
         player1_tokenIndicator.setMaximumSize(new Dimension(20,20));
         player1_tokenIndicator.setPreferredSize(new Dimension(20,20));
@@ -504,9 +504,9 @@ public class DrawMenu {
 
         JButton player_2_bt = new JButton("PLAYER 2");
         if (isDarkMode) {
-            player_2_bt.setUI(new ());
-            player_2_bt.setBackground(Color.darkGray);
-            player_2_bt.setForeground(Color.white);
+            player_2_bt.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
+            player_2_bt.setBackground(Color.darkGray); // changes button background color
+            player_2_bt.setForeground(Color.white); // changes button text color
         }
         //player_2_bt.setMaximumSize(new Dimension(130,30));
         player_2_bt.addActionListener(new ActionListener() {
@@ -522,9 +522,9 @@ public class DrawMenu {
 
         JButton player2_tokenIndicator = new RoundButton(null,new Color(0.0f,0.0f,0.0f,0.0f));
         if (isDarkMode) {
-            player2_tokenIndicator.setUI(new ());
-            player2_tokenIndicator.setBackground(Color.darkGray);
-            player2_tokenIndicator.setForeground(Color.white);
+            player2_tokenIndicator.setUI(new MetalButtonUI());// makes button compatible with setBackground() function
+            player2_tokenIndicator.setBackground(Color.darkGray); // changes button background color
+            player2_tokenIndicator.setForeground(Color.white); // changes button text color
         }
         player2_tokenIndicator.setMaximumSize(new Dimension(20,20));
         player2_tokenIndicator.setPreferredSize(new Dimension(20,20));
@@ -541,9 +541,9 @@ public class DrawMenu {
 
         JButton resetToken = new JButton("RESET");
         if (isDarkMode) {
-            resetToken.setUI(new ());
-            resetToken.setBackground(Color.darkGray);
-            resetToken.setForeground(Color.white);
+            resetToken.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
+            resetToken.setBackground(Color.darkGray); // changes button background color
+            resetToken.setForeground(Color.white); // changes button text color
         }
         resetToken.setLocation(90,0);
         resetToken.setMaximumSize(new Dimension(115,25));
@@ -562,9 +562,9 @@ public class DrawMenu {
 
         JButton backToMenu = new JButton("BACK");
         if (isDarkMode) {
-            backToMenu.setUI(new ());
-            backToMenu.setBackground(Color.darkGray);
-            backToMenu.setForeground(Color.white);
+            backToMenu.setUI(new MetalButtonUI()); // makes button compatible with setBackground() function
+            backToMenu.setBackground(Color.darkGray); // changes button background color
+            backToMenu.setForeground(Color.white); // changes button text color
         }
         backToMenu.setMaximumSize(new Dimension(115,25));
         backToMenu.addActionListener(new ActionListener() {
