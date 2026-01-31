@@ -48,7 +48,7 @@ public class DrawGrid {
         frame = new JFrame("CONNECT 4");
         if (isDarkMode) {
             frame.setBackground(Color.black);
-            frame.getContentPane().setBackground(Color.black);
+            frame.getContentPane().setBackground(Color.black); // sets game area to black
         }
         frame.setBounds(ld.getX(),ld.getY(),ld.getWidth(), ld.getHeight());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
