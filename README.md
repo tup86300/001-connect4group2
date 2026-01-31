@@ -68,3 +68,12 @@ Provide here instructions on how to use your application.
  - Ability to play with computer AI
  - Ability to customize game theme 
  - Cross platform Windows, Mac
+
+# 📄 New Features
+ - Crissy: Background selection feature version 1: Prompts the user in the terminal to enter the file path of the desired background image.
+ - Tomas: Background selection feature version 2: A pop-up file explorer window to select a background image.
+ - Taha: A “Victory Raffle” feature was added which displays a randomized quote when someone wins the match. There are three unique quotes for Player wins and three unique quotes for AI wins. The gameEnd logic inside DrawGrid.java was updated to
+   handle these display messages. The victory raffle message is shown in the box to the right of the Connect 4 board after the match concludes.
+ - Cole: Ability to switch from light mode to dark mode. This feature introduces a toggle button, which changes the styles of the buttons and background from whites and light grays to blacks and dark grays. This gives the user the option to have
+   a higher contrast during their game.
+
