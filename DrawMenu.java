@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.metal.MetalButtonUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -85,6 +86,11 @@ public class DrawMenu {
         int[][] colors = {{250,0,0},{250,90,0},{250,175,0},{250,250,0},{175,250,0},{0,250,0},{0,250,150},{0,250,250},{0,150,250},
                 {0,0,250},{150,0,250},{250,0,250},{250,0,150},{200,200,200},{0,0,0}};
         JButton selectToken = new JButton("Select Token");
+        if (isDarkMode) {
+            selectToken.setUI(new MetalButtonUI());
+            selectToken.setBackground(Color.darkGray);
+            selectToken.setForeground(Color.white);
+        }
         selectToken.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -97,6 +103,11 @@ public class DrawMenu {
         });
 
         JButton pvp = new JButton("Player vs Player");
+        if (isDarkMode) {
+            pvp.setUI(new MetalButtonUI());
+            pvp.setBackground(Color.darkGray);
+            pvp.setForeground(Color.white);
+        }
         pvp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -108,6 +119,11 @@ public class DrawMenu {
 
         // this button sets up the AI level
         JButton pvai = new JButton("Player vs AI");
+        if (isDarkMode) {
+            pvai.setUI(new MetalButtonUI());
+            pvai.setBackground(Color.darkGray);
+            pvai.setForeground(Color.white);
+        }
         pvai.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -119,6 +135,11 @@ public class DrawMenu {
                 // set up AI buttons
                 // easy
                 JButton AI_easy_button = new JButton("EASY");
+                if (isDarkMode) {
+                    AI_easy_button.setUI(new MetalButtonUI());
+                    AI_easy_button.setBackground(Color.darkGray);
+                    AI_easy_button.setForeground(Color.white);
+                }
                 AI_easy_button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -130,6 +151,11 @@ public class DrawMenu {
 
                 // hard
                 JButton AI_hard_button = new JButton("HARD");
+                if (isDarkMode) {
+                    AI_hard_button.setUI(new MetalButtonUI());
+                    AI_hard_button.setBackground(Color.darkGray);
+                    AI_hard_button.setForeground(Color.white);
+                }
                 AI_hard_button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -141,6 +167,11 @@ public class DrawMenu {
 
                 // return to menu button
                 JButton backbt = new JButton("BACK");
+                if (isDarkMode) {
+                    backbt.setUI(new MetalButtonUI());
+                    backbt.setBackground(Color.darkGray);
+                    backbt.setForeground(Color.white);
+                }
                 backbt.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -180,6 +211,11 @@ public class DrawMenu {
 
 
         JButton sound = new RoundButton(new ImageIcon(getClass().getResource("/res/images/UnmuteSound.png")),null);
+        if (isDarkMode) {
+            sound.setUI(new MetalButtonUI());
+            sound.setBackground(Color.darkGray);
+            sound.setForeground(Color.white);
+        }
         sound.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -196,23 +232,31 @@ public class DrawMenu {
             }
         });
 
-        JButton darkMode = new RoundButton(new ImageIcon(getClass().getResource("/res/images/lightModeIcon.png")),null);
+        JButton darkMode = new RoundButton(new ImageIcon(getClass().getResource("/res/images/darkModeIcon.png")), null);
+        if (isDarkMode) {
+            darkMode.setUI(new MetalButtonUI());
+            darkMode.setBackground(Color.darkGray);
+            darkMode.setForeground(Color.white);
+            ((RoundButton) darkMode).setImg(new ImageIcon(getClass().getResource("/res/images/lightModeIcon.png")));
+        }
         darkMode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 toggleDarkMode();
-                if (isDarkMode == false) {
-                    isDarkMode = false;
-                    ((RoundButton) darkMode).setImg(new ImageIcon(getClass().getResource("/res/images/lightModeIcon.png")));
-                } else {
-                    isDarkMode = true;
-                    ((RoundButton) darkMode).setImg(new ImageIcon(getClass().getResource("/res/images/darkModeIcon.png")));
-                }
+                container.removeAll();
+                createButtons(container, ld);
+                container.repaint();
+                frame.pack();
             }
         });
 
         // exit button
         JButton exit = new JButton("EXIT");
+        if (isDarkMode) {
+            exit.setUI(new MetalButtonUI());
+            exit.setBackground(Color.darkGray);
+            exit.setForeground(Color.white);
+        }
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -231,9 +275,9 @@ public class DrawMenu {
         pvp.setMaximumSize(d);
         pvai.setMaximumSize(d);
         sound.setMaximumSize(new Dimension(50,50));
-        darkMode.setMaximumSize(new Dimension(50,50));
         sound.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
         darkMode.setMaximumSize(new Dimension(50,50));
+        darkMode.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
         exit.setMaximumSize(d);
 
         // space between buttons
@@ -387,6 +431,11 @@ public class DrawMenu {
         player_1_container.setMaximumSize(new Dimension(130,30));
 
         JButton player_1_bt = new JButton("PLAYER 1");
+        if (isDarkMode) {
+            player_1_bt.setUI(new MetalButtonUI());
+            player_1_bt.setBackground(Color.darkGray);
+            player_1_bt.setForeground(Color.white);
+        }
         player_1_bt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -399,6 +448,11 @@ public class DrawMenu {
         player_1_container.add(player_1_bt);
 
         JButton player1_tokenIndicator = new RoundButton(null,new Color(0.0f,0.0f,0.0f,0.0f));
+        if (isDarkMode) {
+            player1_tokenIndicator.setUI(new MetalButtonUI());
+            player1_tokenIndicator.setBackground(Color.darkGray);
+            player1_tokenIndicator.setForeground(Color.white);
+        }
         player1_tokenIndicator.setMaximumSize(new Dimension(20,20));
         player1_tokenIndicator.setPreferredSize(new Dimension(20,20));
         if(player_1_token == null){
@@ -418,6 +472,11 @@ public class DrawMenu {
         player_2_container.setMaximumSize(new Dimension(130,30));
 
         JButton player_2_bt = new JButton("PLAYER 2");
+        if (isDarkMode) {
+            player_2_bt.setUI(new MetalButtonUI());
+            player_2_bt.setBackground(Color.darkGray);
+            player_2_bt.setForeground(Color.white);
+        }
         //player_2_bt.setMaximumSize(new Dimension(130,30));
         player_2_bt.addActionListener(new ActionListener() {
             @Override
@@ -431,6 +490,11 @@ public class DrawMenu {
         player_2_container.add(player_2_bt);
 
         JButton player2_tokenIndicator = new RoundButton(null,new Color(0.0f,0.0f,0.0f,0.0f));
+        if (isDarkMode) {
+            player2_tokenIndicator.setUI(new MetalButtonUI());
+            player2_tokenIndicator.setBackground(Color.darkGray);
+            player2_tokenIndicator.setForeground(Color.white);
+        }
         player2_tokenIndicator.setMaximumSize(new Dimension(20,20));
         player2_tokenIndicator.setPreferredSize(new Dimension(20,20));
         if(player_2_token == null){
@@ -445,6 +509,11 @@ public class DrawMenu {
 
 
         JButton resetToken = new JButton("RESET");
+        if (isDarkMode) {
+            resetToken.setUI(new MetalButtonUI());
+            resetToken.setBackground(Color.darkGray);
+            resetToken.setForeground(Color.white);
+        }
         resetToken.setLocation(90,0);
         resetToken.setMaximumSize(new Dimension(115,25));
         resetToken.addActionListener(new ActionListener() {
@@ -461,6 +530,11 @@ public class DrawMenu {
         });
 
         JButton backToMenu = new JButton("BACK");
+        if (isDarkMode) {
+            backToMenu.setUI(new MetalButtonUI());
+            backToMenu.setBackground(Color.darkGray);
+            backToMenu.setForeground(Color.white);
+        }
         backToMenu.setMaximumSize(new Dimension(115,25));
         backToMenu.addActionListener(new ActionListener() {
             @Override
