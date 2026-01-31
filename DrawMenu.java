@@ -1,5 +1,7 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,19 +55,39 @@ public class DrawMenu {
         frame.setPreferredSize(frame.getSize());
 
 
-        // set background
-        Scanner scan = new Scanner(System.in);
-        System.out.print("(Optional) Enter custom background image file path: ");
-        String path = scan.nextLine();
-        File f = new File(path);
-        if (f.exists()) {
-            System.out.println("Successfully imported custom background!");
-            container = new JLabel(new ImageIcon(path));
-        }
-        else {
-            System.out.println("Invalid path. Using default background.");
-            container = new JLabel(new ImageIcon(getClass().getResource("/res/images/backgroundImage.jpg")));
-        }
+        // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ set background (Crissy's code) ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        //Scanner scan = new Scanner(System.in);
+        //System.out.print("(Optional) Enter custom background image file path: ");
+        //String path = scan.nextLine();
+        //File f = new File(path);
+        //if (f.exists()) {
+        //    System.out.println("Successfully imported custom background!");
+        //    container = new JLabel(new ImageIcon(path));
+        //}
+        //else {
+        //    System.out.println("Invalid path. Using default background.");
+        //    container = new JLabel(new ImageIcon(getClass().getResource("/res/images/backgroundImage.jpg")));
+        //}
+        // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ set background (Crissy's code) ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+        JFileChooser backgroundImage = new JFileChooser(); // Create the file selection dialog; not visible yet
+            backgroundImage.setDialogTitle("Select background image"); // Set the dialog box title 
+            backgroundImage.setFileFilter(new FileNameExtensionFilter("png images (Name.png)", "png")); //Set a filter so only CSV files appear
+            backgroundImage.setCurrentDirectory(new File(System.getProperty("user.dir"))); // Open the dialog box in the current working directory
+
+            if (backgroundImage.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) { // Use user selected image as background
+                File inputImage = backgroundImage.getSelectedFile();
+                System.out.println("Successfully imported custom background!");
+                System.out.println("Invalid path. Using default background.");
+                container = new JLabel(new ImageIcon(inputImage.getAbsolutePath()));
+            } else {
+                System.out.println("Invalid path. Using default background.");
+                container = new JLabel(new ImageIcon(getClass().getResource("/res/images/backgroundImage.jpg")));
+            }
+            // Use selected image as background if valid
+            
+            
+
         container.setSize(ld.getWidth(),ld.getHeight());
         container.setMinimumSize(container.getSize());
         container.setMaximumSize(container.getSize());
